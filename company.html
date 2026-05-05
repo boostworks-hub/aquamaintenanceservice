@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会社概要 | アクアメンテナンスサービス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-dark: #0c2d6b; --blue-main: #1a56db; --blue-mid: #2563eb;
+  --blue-light: #38bdf8; --blue-pale: #e0f2fe; --cyan: #06b6d4;
+  --white: #ffffff; --gray-50: #f8fafc; --gray-200: #e2e8f0;
+  --gray-600: #475569; --gray-700: #334155; --gray-900: #0f172a;
+  --font-serif: 'Noto Serif JP', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --font-oswald: 'Oswald', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--gray-700); background: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-bottom: 2px solid var(--blue-light); box-shadow: 0 2px 20px rgba(26,86,219,0.10); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 24px; height: 70px; }
+.logo-main { font-family: var(--font-oswald); font-size: 13px; letter-spacing: 0.15em; color: var(--blue-dark); font-weight: 700; line-height: 1; }
+.logo-sub { font-family: var(--font-serif); font-size: 16px; font-weight: 700; color: var(--blue-dark); }
+.header-nav { flex: 1; display: flex; justify-content: center; }
+.header-nav ul { list-style: none; display: flex; gap: 6px; }
+.header-nav a { font-size: 13px; font-weight: 500; color: var(--gray-700); padding: 6px 14px; border-radius: 4px; transition: all 0.2s; white-space: nowrap; }
+.header-nav a:hover, .header-nav a.active { background: var(--blue-pale); color: var(--blue-main); }
+.header-right { flex-shrink: 0; display: flex; align-items: center; gap: 12px; }
+.header-tel { font-family: var(--font-oswald); font-size: 18px; font-weight: 700; color: var(--blue-dark); }
+.header-tel span { font-family: var(--font-sans); font-size: 10px; display: block; color: var(--gray-600); font-weight: 400; }
+.btn-cta { background: var(--blue-main); color: var(--white); font-size: 12px; font-weight: 700; padding: 10px 18px; border-radius: 6px; white-space: nowrap; transition: all 0.2s; display: inline-block; }
+.btn-cta:hover { background: var(--blue-dark); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--blue-dark); transition: all 0.3s; border-radius: 2px; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; padding: 32px 24px; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 16px; font-weight: 500; color: var(--gray-700); padding: 14px 0; border-bottom: 1px solid var(--gray-200); }
+.mobile-menu-tel { margin-top: 20px; font-family: var(--font-oswald); font-size: 26px; font-weight: 700; color: var(--blue-dark); text-align: center; }
+
+.page-hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 70%, var(--cyan) 100%); padding: 130px 0 70px; text-align: center; position: relative; overflow: hidden; margin-top: 70px; }
+.page-hero-tag { font-family: var(--font-oswald); font-size: 12px; letter-spacing: 0.3em; color: var(--blue-light); font-weight: 600; margin-bottom: 12px; display: block; }
+.page-hero-title { font-family: var(--font-serif); font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: var(--white); }
+.page-hero-sub { font-size: 15px; color: rgba(255,255,255,0.75); margin-top: 16px; }
+.breadcrumb { display: flex; gap: 8px; align-items: center; justify-content: center; margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.6); }
+.breadcrumb a { color: rgba(255,255,255,0.8); }
+
+.section { padding: 80px 0; }
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section-tag { font-family: var(--font-oswald); font-size: 12px; letter-spacing: 0.3em; color: var(--blue-main); font-weight: 600; margin-bottom: 10px; display: block; }
+.section-title { font-family: var(--font-serif); font-size: clamp(26px, 3.5vw, 36px); font-weight: 900; color: var(--blue-dark); margin-bottom: 40px; }
+
+/* MESSAGE */
+.message-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; }
+.message-photo { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(26,86,219,0.12); }
+.message-photo-inner { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, var(--blue-pale), var(--blue-light)); display: flex; align-items: center; justify-content: center; font-size: 80px; }
+.message-name { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--blue-dark); margin-top: 16px; text-align: center; }
+.message-name span { font-size: 12px; color: var(--gray-600); display: block; font-weight: 400; }
+.message-text { font-size: 15px; line-height: 2; color: var(--gray-600); }
+.message-text p { margin-bottom: 20px; }
+.message-sig { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--blue-dark); margin-top: 32px; }
+
+/* TABLE */
+.company-table { width: 100%; border-collapse: collapse; }
+.company-table th, .company-table td { padding: 18px 20px; border-bottom: 1px solid var(--gray-200); font-size: 14px; text-align: left; vertical-align: top; }
+.company-table th { width: 28%; font-weight: 700; color: var(--blue-dark); background: var(--gray-50); font-family: var(--font-serif); }
+.company-table td { color: var(--gray-700); line-height: 1.75; }
+.company-table tr:first-child th, .company-table tr:first-child td { border-top: 2px solid var(--blue-light); }
+
+/* MAP */
+.map-wrap { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.1); height: 400px; }
+.map-wrap iframe { width: 100%; height: 100%; border: none; }
+
+.cta-band { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%); padding: 70px 0; text-align: center; }
+.cta-band-title { font-family: var(--font-serif); font-size: clamp(24px, 3vw, 36px); font-weight: 900; color: var(--white); margin-bottom: 14px; }
+.cta-band-sub { font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 32px; }
+.btn-primary { background: var(--white); color: var(--blue-dark); font-size: 15px; font-weight: 700; padding: 16px 36px; border-radius: 8px; transition: all 0.25s; display: inline-block; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.cta-tel-band { font-family: var(--font-oswald); font-size: 36px; font-weight: 700; color: var(--white); margin-top: 20px; }
+.cta-tel-band span { font-family: var(--font-sans); font-size: 12px; display: block; color: rgba(255,255,255,0.65); font-weight: 400; margin-bottom: 4px; }
+
+.site-footer { background: var(--gray-900); color: rgba(255,255,255,0.75); padding: 60px 0 28px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
+.footer-logo-main { font-family: var(--font-oswald); font-size: 12px; letter-spacing: 0.2em; color: var(--blue-light); font-weight: 600; margin-bottom: 6px; }
+.footer-logo-sub { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+.footer-info { font-size: 13px; line-height: 2; }
+.footer-col-title { font-family: var(--font-oswald); font-size: 12px; letter-spacing: 0.2em; color: var(--blue-light); font-weight: 600; margin-bottom: 16px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+.footer-links a:hover { color: var(--blue-light); }
+.footer-bottom { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); }
+
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .header-nav, .header-right .header-tel, .header-right .btn-cta { display: none; }
+  .hamburger { display: flex; margin-left: auto; }
+  .message-layout { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .company-table th { width: 35%; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-wrap"><a href="index.html"><div class="logo-main">AQUA MAINTENANCE SERVICE</div><div class="logo-sub">アクアメンテナンスサービス</div></a></div>
+    <nav class="header-nav"><ul>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="service.html">施工案内</a></li>
+      <li><a href="works.html">施工実績</a></li>
+      <li><a href="company.html" class="active">会社概要</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="contact.html">お問い合わせ</a></li>
+    </ul></nav>
+    <div class="header-right">
+      <div class="header-tel"><span>お気軽にご相談ください</span>048-988-2274</div>
+      <a href="contact.html" class="btn-cta">無料相談</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="index.html">ホーム</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a><a href="company.html">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html">お問い合わせ</a>
+  <div class="mobile-menu-tel">048-988-2274</div>
+</nav>
+
+<section class="page-hero">
+  <span class="page-hero-tag">Company</span>
+  <h1 class="page-hero-title">会社概要</h1>
+  <p class="page-hero-sub">地域の水環境を守り続ける、アクアメンテナンスサービスについて</p>
+  <div class="breadcrumb"><a href="index.html">ホーム</a><span>›</span><span>会社概要</span></div>
+</section>
+
+<!-- 代表メッセージ -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-tag">Message</span>
+    <h2 class="section-title">代表メッセージ</h2>
+    <div class="message-layout fade-up">
+      <div>
+        <div class="message-photo">
+          <div class="message-photo-inner">👤</div>
+        </div>
+        <div class="message-name">諸井 健一<span>代表</span></div>
+      </div>
+      <div class="message-text">
+        <p>私たちアクアメンテナンスサービスは、浄化槽の保守点検から水道設備工事まで、地域の皆さまの大切な水環境を守ることを使命として事業を続けてまいりました。</p>
+        <p>水は私たちの暮らしに欠かせないライフラインです。だからこそ、法令に基づいた適切なメンテナンスはもちろん、「急なトラブルにも素早く駆けつける」「わかりやすく丁寧に説明する」という姿勢を大切にしています。</p>
+        <p>越谷市を中心に、草加市・吉川市・三郷市など埼玉県東部エリアの皆さまから長年ご信頼をいただいてまいりました。これからも地域に根ざしたサービスを提供し、安全で快適な暮らしを支え続けてまいります。お困りのことがあれば、どうぞお気軽にご相談ください。</p>
+        <div class="message-sig">代表　諸井 健一</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 会社概要 -->
+<section class="section" style="background: var(--gray-50);">
+  <div class="section-inner">
+    <span class="section-tag">Overview</span>
+    <h2 class="section-title">会社概要</h2>
+    <table class="company-table fade-up">
+      <tr><th>会社名</th><td>アクアメンテナンスサービス</td></tr>
+      <tr><th>代表者</th><td>諸井 健一</td></tr>
+      <tr><th>所在地</th><td>〒343-0821<br>埼玉県越谷市七左町1丁目190番地35</td></tr>
+      <tr><th>電話番号</th><td>048-988-2274</td></tr>
+      <tr><th>営業時間</th><td>平日 8:00〜17:00</td></tr>
+      <tr><th>定休日</th><td>土曜・日曜・祝日（緊急時はご相談ください）</td></tr>
+      <tr><th>業務内容</th><td>浄化槽保守点検・浄化槽清掃・水道設備工事・緊急トラブル対応</td></tr>
+      <tr><th>対応エリア</th><td>越谷市を中心に、草加市・吉川市・三郷市・春日部市・松伏町など埼玉県東部エリア</td></tr>
+      <tr><th>登録・許可</th><td>越谷市浄化槽保守点検業者 登録</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- アクセス -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-tag">Access</span>
+    <h2 class="section-title">アクセス・地図</h2>
+    <div class="map-wrap fade-up">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3232.0!2d139.7834!3d35.8891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188f8f00000000%3A0x0!2z5Z6L5Yy65biC5LiD5bCx55S677yR5LiB55uu77yR77yY77yQ5I2N5Zyw77ySNQ!5e0!3m2!1sja!2sjp!4v1234567890"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="アクアメンテナンスサービス 地図">
+      </iframe>
+    </div>
+    <div style="margin-top: 20px; font-size: 14px; color: var(--gray-600); line-height: 1.8;">
+      <strong style="color: var(--blue-dark);">📍 アクアメンテナンスサービス</strong><br>
+      〒343-0821 埼玉県越谷市七左町1丁目190番地35<br>
+      TEL: 048-988-2274 ／ 平日 8:00〜17:00
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div style="max-width:800px; margin:0 auto; padding:0 24px;">
+    <h2 class="cta-band-title">お気軽にお問い合わせください</h2>
+    <p class="cta-band-sub">ご質問・ご相談・お見積りのご依頼はこちらから</p>
+    <a href="contact.html" class="btn-primary">お問い合わせ・無料見積りを依頼する</a>
+    <div class="cta-tel-band"><span>お電話でのお問い合わせ（平日 8:00〜17:00）</span>048-988-2274</div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-main">AQUA MAINTENANCE SERVICE</div>
+        <div class="footer-logo-sub">アクアメンテナンスサービス</div>
+        <div class="footer-info">〒343-0821<br>埼玉県越谷市七左町1丁目190番地35<br>TEL: 048-988-2274<br>代表：諸井 健一<br>営業時間：平日 8:00〜17:00</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="service.html">浄化槽保守点検</a></li>
+          <li><a href="service.html">浄化槽清掃</a></li>
+          <li><a href="service.html">水道設備工事</a></li>
+          <li><a href="service.html">緊急トラブル対応</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <ul class="footer-links">
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="works.html">施工実績</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="recruit.html">採用情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2024 アクアメンテナンスサービス All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

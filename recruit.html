@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | アクアメンテナンスサービス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-dark: #0c2d6b; --blue-main: #1a56db; --blue-mid: #2563eb;
+  --blue-light: #38bdf8; --blue-pale: #e0f2fe; --cyan: #06b6d4;
+  --white: #ffffff; --gray-50: #f8fafc; --gray-200: #e2e8f0;
+  --gray-600: #475569; --gray-700: #334155; --gray-900: #0f172a;
+  --font-serif: 'Noto Serif JP', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --font-oswald: 'Oswald', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--gray-700); background: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-bottom: 2px solid var(--blue-light); box-shadow: 0 2px 20px rgba(26,86,219,0.10); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 24px; height: 70px; }
+.logo-main { font-family: var(--font-oswald); font-size: 13px; letter-spacing: 0.15em; color: var(--blue-dark); font-weight: 700; line-height: 1; }
+.logo-sub { font-family: var(--font-serif); font-size: 16px; font-weight: 700; color: var(--blue-dark); }
+.header-nav { flex: 1; display: flex; justify-content: center; }
+.header-nav ul { list-style: none; display: flex; gap: 6px; }
+.header-nav a { font-size: 13px; font-weight: 500; color: var(--gray-700); padding: 6px 14px; border-radius: 4px; transition: all 0.2s; white-space: nowrap; }
+.header-nav a:hover, .header-nav a.active { background: var(--blue-pale); color: var(--blue-main); }
+.header-right { flex-shrink: 0; display: flex; align-items: center; gap: 12px; }
+.header-tel { font-family: var(--font-oswald); font-size: 18px; font-weight: 700; color: var(--blue-dark); }
+.header-tel span { font-family: var(--font-sans); font-size: 10px; display: block; color: var(--gray-600); font-weight: 400; }
+.btn-cta { background: var(--blue-main); color: var(--white); font-size: 12px; font-weight: 700; padding: 10px 18px; border-radius: 6px; white-space: nowrap; transition: all 0.2s; display: inline-block; }
+.btn-cta:hover { background: var(--blue-dark); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--blue-dark); transition: all 0.3s; border-radius: 2px; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; padding: 32px 24px; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 16px; font-weight: 500; color: var(--gray-700); padding: 14px 0; border-bottom: 1px solid var(--gray-200); }
+.mobile-menu-tel { margin-top: 20px; font-family: var(--font-oswald); font-size: 26px; font-weight: 700; color: var(--blue-dark); text-align: center; }
+
+.page-hero { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 70%, var(--cyan) 100%); padding: 130px 0 70px; text-align: center; position: relative; margin-top: 70px; }
+.page-hero-tag { font-family: var(--font-oswald); font-size: 12px; letter-spacing: 0.3em; color: var(--blue-light); font-weight: 600; margin-bottom: 12px; display: block; }
+.page-hero-title { font-family: var(--font-serif); font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: var(--white); }
+.page-hero-sub { font-size: 15px; color: rgba(255,255,255,0.75); margin-top: 16px; }
+.breadcrumb { display: flex; gap: 8px; align-items: center; justify-content: center; margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.6); }
+.breadcrumb a { color: rgba(255,255,255,0.8); }
+
+.section { padding: 80px 0; }
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section-tag { font-family: var(--font-oswald); font-size: 12px; letter-spacing: 0.3em; color: var(--blue-main); font-weight: 600; margin-bottom: 10px; display: block; }
+.section-title { font-family: var(--font-serif); font-size: clamp(26px, 3.5vw, 36px); font-weight: 900; color: var(--blue-dark); margin-bottom: 40px; }
+
+/* APPEAL CARDS */
+.appeal-section { background: var(--gray-900); }
+.appeal-section .section-tag { color: var(--blue-light); }
+.appeal-section .section-title { color: var(--white); }
+.appeal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.appeal-card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 32px 24px; border: 1px solid rgba(56,189,248,0.2); transition: all 0.3s; text-align: center; }
+.appeal-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-3px); }
+.appeal-icon { font-size: 48px; margin-bottom: 16px; }
+.appeal-title { font-family: var(--font-serif); font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+.appeal-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.75; }
+
+/* VOICE */
+.voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.voice-card { background: var(--white); border-radius: 12px; padding: 32px; border: 1px solid var(--gray-200); box-shadow: 0 4px 20px rgba(26,86,219,0.06); position: relative; }
+.voice-card::before { content: '\201C'; font-family: Georgia, serif; font-size: 80px; color: var(--blue-pale); position: absolute; top: 10px; left: 20px; line-height: 1; }
+.voice-text { font-size: 14px; line-height: 1.85; color: var(--gray-700); margin-bottom: 20px; position: relative; z-index: 1; padding-top: 30px; }
+.voice-name { font-family: var(--font-serif); font-size: 14px; font-weight: 700; color: var(--blue-dark); }
+.voice-role { font-size: 11px; color: var(--gray-600); margin-top: 2px; }
+
+/* JOB TABLE */
+.job-table { width: 100%; border-collapse: collapse; }
+.job-table th, .job-table td { padding: 18px 20px; border-bottom: 1px solid var(--gray-200); font-size: 14px; text-align: left; vertical-align: top; }
+.job-table th { width: 28%; font-weight: 700; color: var(--blue-dark); background: var(--gray-50); font-family: var(--font-serif); }
+.job-table td { color: var(--gray-700); line-height: 1.75; }
+.job-table tr:first-child th, .job-table tr:first-child td { border-top: 2px solid var(--blue-light); }
+
+/* FLOW */
+.recruit-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+.recruit-flow::before { content: ''; position: absolute; top: 36px; left: calc(12.5% + 16px); right: calc(12.5% + 16px); height: 2px; background: linear-gradient(90deg, var(--blue-light), var(--blue-main)); z-index: 0; }
+.flow-step { text-align: center; position: relative; z-index: 1; }
+.flow-num { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-main), var(--blue-dark)); color: var(--white); font-family: var(--font-oswald); font-size: 24px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(26,86,219,0.3); }
+.flow-title { font-family: var(--font-serif); font-size: 16px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+.flow-text { font-size: 12px; color: var(--gray-600); line-height: 1.75; }
+
+/* APPLY CTA */
+.apply-cta { background: var(--blue-pale); border-radius: 16px; padding: 52px; text-align: center; }
+.apply-cta-title { font-family: var(--font-serif); font-size: 26px; font-weight: 900; color: var(--blue-dark); margin-bottom: 12px; }
+.apply-cta-sub { font-size: 15px; color: var(--gray-600); margin-bottom: 28px; }
+.btn-apply { background: var(--blue-main); color: var(--white); font-size: 16px; font-weight: 700; padding: 18px 44px; border-radius: 8px; transition: all 0.25s; display: inline-block; }
+.btn-apply:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,86,219,0.3); }
+
+.site-footer { background: var(--gray-900); color: rgba(255,255,255,0.75); padding: 60px 0 28px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
+.footer-logo-main { font-family: var(--font-oswald); font-size: 12px; letter-spacing: 0.2em; color: var(--blue-light); font-weight: 600; margin-bottom: 6px; }
+.footer-logo-sub { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+.footer-info { font-size: 13px; line-height: 2; }
+.footer-col-title { font-family: var(--font-oswald); font-size: 12px; letter-spacing: 0.2em; color: var(--blue-light); font-weight: 600; margin-bottom: 16px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+.footer-links a:hover { color: var(--blue-light); }
+.footer-bottom { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); }
+
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .header-nav, .header-right .header-tel, .header-right .btn-cta { display: none; }
+  .hamburger { display: flex; margin-left: auto; }
+  .appeal-grid { grid-template-columns: repeat(2, 1fr); }
+  .voice-grid { grid-template-columns: 1fr; }
+  .recruit-flow { grid-template-columns: repeat(2, 1fr); }
+  .recruit-flow::before { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .apply-cta { padding: 32px 24px; }
+}
+@media (max-width: 600px) {
+  .appeal-grid { grid-template-columns: 1fr; }
+  .recruit-flow { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-wrap"><a href="index.html"><div class="logo-main">AQUA MAINTENANCE SERVICE</div><div class="logo-sub">アクアメンテナンスサービス</div></a></div>
+    <nav class="header-nav"><ul>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="service.html">施工案内</a></li>
+      <li><a href="works.html">施工実績</a></li>
+      <li><a href="company.html">会社概要</a></li>
+      <li><a href="recruit.html" class="active">採用情報</a></li>
+      <li><a href="contact.html">お問い合わせ</a></li>
+    </ul></nav>
+    <div class="header-right">
+      <div class="header-tel"><span>お気軽にご相談ください</span>048-988-2274</div>
+      <a href="contact.html" class="btn-cta">無料相談</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="index.html">ホーム</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a><a href="company.html">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html">お問い合わせ</a>
+  <div class="mobile-menu-tel">048-988-2274</div>
+</nav>
+
+<section class="page-hero">
+  <span class="page-hero-tag">Recruit</span>
+  <h1 class="page-hero-title">採用情報</h1>
+  <p class="page-hero-sub">地域の水環境を守る仕事に、一緒に挑戦しませんか</p>
+  <div class="breadcrumb"><a href="index.html">ホーム</a><span>›</span><span>採用情報</span></div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="section appeal-section">
+  <div class="section-inner">
+    <span class="section-tag">Why Join Us</span>
+    <h2 class="section-title">働く魅力</h2>
+    <div class="appeal-grid">
+      <div class="appeal-card fade-up">
+        <div class="appeal-icon">🎓</div>
+        <h3 class="appeal-title">未経験から<br>スタートできる</h3>
+        <p class="appeal-text">入社後の研修制度が充実。先輩スタッフが丁寧にサポートするので、未経験の方でも安心して技術を身につけられます。</p>
+      </div>
+      <div class="appeal-card fade-up">
+        <div class="appeal-icon">📋</div>
+        <h3 class="appeal-title">資格取得を<br>会社がサポート</h3>
+        <p class="appeal-text">浄化槽管理士・給水装置工事主任技術者など、仕事に活かせる資格の取得費用を会社が全額補助します。</p>
+      </div>
+      <div class="appeal-card fade-up">
+        <div class="appeal-icon">🌿</div>
+        <h3 class="appeal-title">地域に貢献できる<br>やりがいある仕事</h3>
+        <p class="appeal-text">日々の点検・工事が地域の人々の安全な暮らしを支えています。「ありがとう」の言葉が直接届く、達成感のある仕事です。</p>
+      </div>
+      <div class="appeal-card fade-up">
+        <div class="appeal-icon">⚖️</div>
+        <h3 class="appeal-title">安定した<br>ワークライフバランス</h3>
+        <p class="appeal-text">基本は平日勤務。残業は極力抑え、休日はしっかり休める環境を整えています。家庭との両立も応援します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- スタッフの声 -->
+<section class="section" style="background: var(--gray-50);">
+  <div class="section-inner">
+    <span class="section-tag">Staff Voice</span>
+    <h2 class="section-title">スタッフの声</h2>
+    <div class="voice-grid">
+      <div class="voice-card fade-up">
+        <p class="voice-text">未経験で入社しましたが、先輩が現場で丁寧に教えてくれるので不安なく仕事を覚えられました。資格取得も会社がサポートしてくれて、今では一人で点検ができるようになっています。</p>
+        <div class="voice-name">Aさん（20代）</div>
+        <div class="voice-role">浄化槽保守点検スタッフ / 入社2年目</div>
+      </div>
+      <div class="voice-card fade-up">
+        <p class="voice-text">以前は全く別の仕事をしていました。「手に職をつけたい」と思って転職したのですが、ここは未経験でも歓迎してくれました。地域のお客様に「助かった」と言ってもらえる瞬間がとても嬉しいです。</p>
+        <div class="voice-name">Bさん（30代）</div>
+        <div class="voice-role">水道設備工事スタッフ / 入社3年目</div>
+      </div>
+      <div class="voice-card fade-up">
+        <p class="voice-text">休日がしっかり確保されているので、家族との時間を大切にしながら働けています。チームの雰囲気も良く、困ったときは気軽に相談できる環境が気に入っています。</p>
+        <div class="voice-name">Cさん（40代）</div>
+        <div class="voice-role">現場リーダー / 入社5年目</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 求人詳細 -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-tag">Job Details</span>
+    <h2 class="section-title">求人詳細</h2>
+    <table class="job-table fade-up">
+      <tr><th>職種</th><td>浄化槽保守点検スタッフ・水道設備工事スタッフ</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月）</td></tr>
+      <tr><th>給与</th><td>月給220,000円〜280,000円（経験・スキルにより優遇）<br>※資格・経験による優遇あり</td></tr>
+      <tr><th>勤務時間</th><td>8:00〜17:00（実働8時間）</td></tr>
+      <tr><th>休日・休暇</th><td>土曜・日曜・祝日、年次有給休暇、慶弔休暇</td></tr>
+      <tr><th>待遇・福利厚生</th><td>社会保険完備（雇用・労災・健康・厚生年金）、資格取得費用補助、制服支給、車両貸与（業務用）</td></tr>
+      <tr><th>勤務地</th><td>埼玉県越谷市七左町1丁目190番地35（越谷市・周辺エリアで現場作業）</td></tr>
+      <tr><th>応募資格</th><td>未経験歓迎・学歴不問<br>普通自動車運転免許（AT限定可）</td></tr>
+      <tr><th>歓迎スキル</th><td>浄化槽管理士、給水装置工事主任技術者、配管技能士など</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 応募の流れ -->
+<section class="section" style="background: var(--gray-50);">
+  <div class="section-inner">
+    <span class="section-tag">How to Apply</span>
+    <h2 class="section-title">応募の流れ</h2>
+    <div class="recruit-flow fade-up">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <h3 class="flow-title">応募</h3>
+        <p class="flow-text">お問い合わせフォームまたはお電話でご応募ください。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <h3 class="flow-title">書類選考</h3>
+        <p class="flow-text">履歴書をご提出いただき、書類選考を行います（1週間以内に結果をご連絡）。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <h3 class="flow-title">面接</h3>
+        <p class="flow-text">代表または担当者との面接を行います。現場見学も実施予定です。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <h3 class="flow-title">内定・入社</h3>
+        <p class="flow-text">面接後、1週間以内に結果をご連絡。入社日はご相談の上決定します。</p>
+      </div>
+    </div>
+
+    <div class="apply-cta" style="margin-top: 60px;">
+      <h3 class="apply-cta-title">一緒に働いてみませんか？</h3>
+      <p class="apply-cta-sub">ご質問・ご相談だけでも大歓迎です。まずはお気軽にお問い合わせください。</p>
+      <a href="contact.html" class="btn-apply">採用に応募する・お問い合わせする</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-main">AQUA MAINTENANCE SERVICE</div>
+        <div class="footer-logo-sub">アクアメンテナンスサービス</div>
+        <div class="footer-info">〒343-0821<br>埼玉県越谷市七左町1丁目190番地35<br>TEL: 048-988-2274<br>代表：諸井 健一<br>営業時間：平日 8:00〜17:00</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="service.html">浄化槽保守点検</a></li>
+          <li><a href="service.html">浄化槽清掃</a></li>
+          <li><a href="service.html">水道設備工事</a></li>
+          <li><a href="service.html">緊急トラブル対応</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <ul class="footer-links">
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="works.html">施工実績</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="recruit.html">採用情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2024 アクアメンテナンスサービス All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
